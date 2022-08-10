@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	/*
 		// var card string = "Ace of Spades"
@@ -10,13 +12,22 @@ func main() {
 	// Create a slice type string with two elements
 	// cards := []string{"Ace of Diamonds", newCard()}
 	// Replace []string -> deck
-	cards := deck{"Ace of Diamonds", newCard()}
-	// Add an new element to slice
-	cards = append(cards, "Six of Spades")
+	// cards := deck{"Ace of Diamonds", newCard()}
+	// // Add an new element to slice
+	// cards = append(cards, "Six of Spades")
 
-	cards.print()
+	cards := newDeck()
+
+	// cards.print()
+
+	// assign a tuple value
+	hand, remainingCards := deal(cards, 7)
+
+	hand.print()
+	fmt.Println("----------------------------")
+	remainingCards.print()
 }
 
-func newCard() string {
-	return "Ace of Spades"
-}
+// func newCard() string {
+// 	return "Ace of Spades"
+// }
