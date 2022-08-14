@@ -1,10 +1,9 @@
 package main
 
 func main() {
-	cards := newDeck()
-	cards.saveToFile("my_cards")
-}
+	// cards := newDeck()
+	// cards.saveToFile("my_cards")
 
-// func newCard() string {
-// 	return "Ace of Spades"
-// }
+	cards := newDeckFromFile("my_cards")
+	cards.print()
+}
