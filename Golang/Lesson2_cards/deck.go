@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 // Create a new type of 'deck'
@@ -44,6 +46,13 @@ func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
 
+/*
+NOTE: 	In order to use the function 'WriteFile' of ioutil package, we need convert 'slice of strings'
+		to 'slice of bytes'.
+I.E:	slice_of_strings := []string{"A","B","C"}
+		-> fmt.Println([]bye(slice_of_strings))
+		output: 65 66 67
+*/
 // create a new receiver:
 func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
@@ -67,4 +76,25 @@ func newDeckFromFile(filename string) deck {
 
 	s := strings.Split(string(byteSlice), ",")
 	return deck(s)
+}
+
+// Create a new Shuffle function, which is helps to change position of value in slice
+// To do that, we will iterate length of slice and swap index with a new randomized position
+func (d deck) shuffle() {
+
+	// Since 'rand.Intn' will random with only one seed which need to be changed in the loop
+	// Therefore, we will use another function can use 'seed' to initialize a new random in loop
+
+	// seed int64 and func (t Time) UnixNano() int64
+	source := rand.NewSource(time.Now().UnixNano())
+	// func New(src Source) *Rand
+	// New returns a new Rand that uses random values from src to generate other random values.
+	r := rand.New(source)
+
+	for i := range d {
+		// Due to r will return type *Rand have Intn
+		newPos := r.Intn(len(d) - 1)
+
+		d[i], d[newPos] = d[newPos], d[i]
+	}
 }
