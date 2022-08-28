@@ -3,12 +3,8 @@ NOTE in section 4:
 - ***pointer**: Give me the value this memory address is pointing at
 - Big gotcha:
 
-    **Value Types** | **Reference Types**
-    int         | slices
-    float       | map
-    bool        | channels
-    string      | pointers
-    struct      | functions
+- **Value Types**: int, float, bool, string, struct
+- **Reference Types**: slices, map, channels, pointer, functions
 
 *Value types: Use pointers to change these things in a function*
 *Reference types: Dont worry about pointers with these*
@@ -24,8 +20,8 @@ NOTE in section 4:
 Example:
  - mySlice := []string{"Hi","There","how","are","you?"}
 
-**SLICE**                    **array**
-| ptr to head   |---------->|"Hi"|"There"|"how"|"are"|"you?"|
+**SLICE**                    
+| ptr to head   |---------->|"Hi"|"There"|"how"|"are"|"you?"|**array**
 | capacity      |
 | length        |
 
