@@ -1,7 +1,8 @@
 NOTE in section 4:
 - **&variable**: Give me the memory address of the value this variable is poiting at
 - ***pointer**: Give me the value this memory address is pointing at
-- Big gotcha:
+
+Big gotcha:
 
 - **Value Types**: int, float, bool, string, struct
 - **Reference Types**: slices, map, channels, pointer, functions
@@ -20,10 +21,7 @@ NOTE in section 4:
 Example:
  - mySlice := []string{"Hi","There","how","are","you?"}
 
-**SLICE**                    
-| ptr to head   |---------->|"Hi"|"There"|"how"|"are"|"you?"|**array**
-| capacity      |
-| length        |
+**SLICE** | length || capacity || ptr to head  |---------->|"Hi"|"There"|"how"|"are"|"you?"|**array**
 
 **Example:**
 -------------
