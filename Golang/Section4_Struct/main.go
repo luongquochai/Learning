@@ -40,8 +40,13 @@ func main() {
 		},
 	}
 
-	HaiPointer := &Hai
-	HaiPointer.updateName("Haiii")
+	// HaiPointer := &Hai
+	// HaiPointer.updateName("Haiii")
+	/*
+		HaiPointer = type of * person, or a pointer to a person
+		Hai = type of person
+	*/
+	Hai.updateName("Haiii")
 	Hai.print()
 
 }
@@ -50,6 +55,8 @@ func main() {
 NOTE:
 *person: this is a type description, it means we're working with a pointer to a person
 *pointerToPerson: this is an operator, it means we want to manipute the value the pointer is referencing
+---- shortcut pointer
+*person: type of * person, or a pointer to a person
 */
 
 func (pointerToPerson *person) updateName(newFirstName string) {
