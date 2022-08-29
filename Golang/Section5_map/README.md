@@ -1,9 +1,11 @@
 **NOTE FOR SECTION 5: MAP**
 
-- Invalid receiver type map
+- Invalid receiver type map.
 
-- Why we might use a struct instead of a map or vice versa ?
+# Why we might use a struct instead of a map or vice versa ?
+
 **map** | **struct**
+
 - All keys-values must be the same type | - Values can be of different type.
 
 - Keys are indexed-we can iterate over them | - Keys don't support indexing.
