@@ -31,7 +31,14 @@ func main() {
 	}
 
 	// Wait for a value to be sent into the channels. Print out
-	fmt.Println(<-channels)
+	// We can receive a lot of messages from channels base on printing out
+	// fmt.Println(<-channels)
+	// fmt.Println(<-channels) ....
+	// But if print the out put > length of links, the system will hang.
+	for i := 0; i < len(links); i++ {
+		fmt.Println(<-channels)
+	}
+
 }
 
 func checkLink(link string, channels chan string) {
