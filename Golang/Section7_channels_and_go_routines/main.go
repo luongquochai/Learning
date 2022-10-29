@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -35,8 +36,15 @@ func main() {
 	// fmt.Println(<-channels)
 	// fmt.Println(<-channels) ....
 	// But if print the out put > length of links, the system will hang.
-	for i := 0; i < len(links); i++ {
-		fmt.Println(<-channels)
+	// for i := 0; i < len(links); i++ {
+	// 	fmt.Println(<-channels)
+	// }
+
+	for l := range channels {
+		go func(link string) {
+			time.Sleep(5 * time.Second)
+			checkLink(link, channels)
+		}(l) // the variable in here is copied
 	}
 
 }
@@ -46,10 +54,10 @@ func checkLink(link string, channels chan string) {
 	if err != nil {
 		fmt.Println(link, "might be down!")
 		// Send the string "Link is down" into channels
-		channels <- "Link is down"
+		channels <- link
 		return
 	}
 
 	fmt.Println(link, "is up!")
-	channels <- "Link is up"
+	channels <- link
 }
